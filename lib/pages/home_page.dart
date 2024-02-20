@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:test_app2/data/popular_item_data.dart';
 import 'package:test_app2/utility/assets_strings.dart';
 import 'package:test_app2/utility/strings.dart';
 import 'package:test_app2/widgets/category_list_view.dart';
@@ -18,9 +17,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List list = popularItemData;
 
-  List<Widget> viewFormat = const <Widget>[
+  final List<Widget> _viewFormat = const <Widget>[
     Icon(Icons.format_list_bulleted),
     Icon(Icons.grid_view_rounded)
   ];
@@ -160,9 +158,9 @@ class _HomePageState extends State<HomePage> {
           color: const Color(0xFFFECE00),
           fillColor: const Color(0xFFFECE00),
           isSelected: [
-            for (int i = 0; i < viewFormat.length; i++) i == _selectedFormat
+            for (int i = 0; i < _viewFormat.length; i++) i == _selectedFormat
           ],
-          children: viewFormat,
+          children: _viewFormat,
         ),
       );
 }

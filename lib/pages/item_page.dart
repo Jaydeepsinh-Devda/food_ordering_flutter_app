@@ -19,9 +19,9 @@ class ItemPage extends StatefulWidget {
 class _ItemPageState extends State<ItemPage> {
   bool _isFavoriteIconClicked = true;
 
-  List<bool> isSelected = [false, true, false];
-  int sizeNumberSelected = 1;
-  int quantity = 1;
+  final List<bool> _isSelected = [false, true, false];
+  int _sizeNumberSelected = 1;
+  int _quantity = 1;
 
   //! Build Method
 
@@ -99,7 +99,7 @@ class _ItemPageState extends State<ItemPage> {
               ),
             ),
             TextSpan(
-              text: "\n${Strings.kRs1250}",
+              text: "\n${Strings.price1250}",
               style: const TextStyle(
                 fontSize: 29,
                 fontWeight: FontWeight.w500,
@@ -115,7 +115,7 @@ class _ItemPageState extends State<ItemPage> {
         margin: const EdgeInsets.symmetric(vertical: 7),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
-          color: sizeNumberSelected == number
+          color: _sizeNumberSelected == number
               ? Colors.amber
               : const Color(0xFFEAEAEA),
         ),
@@ -171,12 +171,12 @@ class _ItemPageState extends State<ItemPage> {
           fillColor: Colors.transparent,
           onPressed: (int index) {
             setState(() {
-              sizeNumberSelected = index;
-              debugPrint("$isSelected");
+              _sizeNumberSelected = index;
+              debugPrint("$_isSelected");
             });
           },
           direction: Axis.vertical,
-          isSelected: isSelected,
+          isSelected: _isSelected,
           children: [
             _itemSizeButton("S", 0),
             _itemSizeButton("M", 1),
@@ -231,13 +231,13 @@ class _ItemPageState extends State<ItemPage> {
         icon: Icons.remove,
         onClick: () {
           setState(() {
-            if (quantity > 1) quantity--;
+            if (_quantity > 1) _quantity--;
           });
         },
       );
 
   Widget _quantityNumber() => Text(
-        "$quantity",
+        "$_quantity",
         style: const TextStyle(
           color: Color(0xFFFFFFFF),
         ),
@@ -247,7 +247,7 @@ class _ItemPageState extends State<ItemPage> {
         icon: Icons.add,
         onClick: () {
           setState(() {
-            quantity++;
+            _quantity++;
           });
         },
         color: const Color(0xFFFECE00),
@@ -279,9 +279,11 @@ class _ItemPageState extends State<ItemPage> {
             width: 20,
           ),
           const Space(width: 7),
-          const Text(
-            "4.9",
-            style: TextStyle(color: Color(0xFF9E9E9E)),
+          Text(
+            Strings.rating4Above,
+            style: const TextStyle(
+              color: Color(0xFF9E9E9E),
+            ),
           )
         ],
       );
@@ -296,7 +298,9 @@ class _ItemPageState extends State<ItemPage> {
           const Space(width: 7),
           Text(
             Strings.calorie145,
-            style: const TextStyle(color: Color(0xFF9E9E9E)),
+            style: const TextStyle(
+              color: Color(0xFF9E9E9E),
+            ),
           )
         ],
       );
@@ -311,7 +315,9 @@ class _ItemPageState extends State<ItemPage> {
           const Space(width: 7),
           Text(
             Strings.minute30,
-            style: const TextStyle(color: Color(0xFF9E9E9E)),
+            style: const TextStyle(
+              color: Color(0xFF9E9E9E),
+            ),
           )
         ],
       );
@@ -327,17 +333,22 @@ class _ItemPageState extends State<ItemPage> {
 
   Widget _itemDescriptionText() => Text(
         Strings.kItemDescription,
-        style: const TextStyle(color: Color(0xFF9E9E9E), fontSize: 15),
+        style: const TextStyle(
+          color: Color(0xFF9E9E9E),
+          fontSize: 15,
+        ),
       );
 
   Widget _addToCartButton() => ElevatedButton(
         style: ButtonStyle(
           shadowColor: MaterialStateProperty.all(Colors.amber),
           elevation: MaterialStateProperty.all(10),
-          minimumSize:
-              MaterialStateProperty.all<Size>(const Size.fromHeight(54)),
-          backgroundColor:
-              MaterialStateProperty.all<Color>(const Color(0xFFFECE00)),
+          minimumSize: MaterialStateProperty.all<Size>(
+            const Size.fromHeight(54),
+          ),
+          backgroundColor: MaterialStateProperty.all<Color>(
+            const Color(0xFFFECE00),
+          ),
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15),

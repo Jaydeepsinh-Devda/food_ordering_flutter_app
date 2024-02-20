@@ -8,7 +8,7 @@ class Strings {
 
   //* Item page Strings
   static String kMargheritaPizza = "Margherita Pizza";
-  static String kRs1250 = "Rs. 1250";
+  static String price1250 = "Rs. 1250";
   static String kSize = "Size";
   static String kQuantity = "Quantity";
   static String kDetails = "Details";
@@ -17,4 +17,5 @@ class Strings {
   static String kAddToCart = "Add to Cart";
   static String minute30 = "30 min";
   static String calorie145 = "145 Cal";
+  static String rating4Above = "4.9";
 }
